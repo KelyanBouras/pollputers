@@ -1,0 +1,9 @@
+{% if oslist %}
+    <ul>
+    {% for o in oslist %}
+        <li><p>{{ o.ownersNum }} - {{ o.Osname }}</p>></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No OS were submitted</p>
+{% endif %}
