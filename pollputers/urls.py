@@ -7,5 +7,7 @@ urlpatterns = [
     path('', views.processlist, name='list'),
     path('subpross/', views.create_view_process, name='subpross'),
     path('subpross/thank/', views.endsubmission, name='thank'),
-    path('<id>/delete', delete_view)
+    path('<id>/delete', delete_view),
+    path('<id>/choice', TemplateView.as_view(template_name="choice.html")),
+    path('<id>/update', update_view),
 ]

@@ -23,11 +23,11 @@ def oslist(request):  # a view used to list the OS that are in the database
 
 
 def endsubmission(request):  # a view used to show the user their choice was succesfully submitted
-    response = "Thank for your Submission"
-    return HttpResponse(response)
+    return HttpResponseRedirect("/pollputers")
 
-def ondeletin(request):
-    return HttpResponse("object successfully deleted")
+
+def ondeletin(request):  # a view used to confirm the deletion of an item
+    return HttpResponseRedirect("/pollputers")
 
 
 def create_view_process(request):  # a function used to create a web page with the 'ProcessForm'
@@ -45,7 +45,7 @@ def create_view_process(request):  # a function used to create a web page with t
     return render(request, "submit_process.html", context)
 
 
-def delete_view(request, id):
+def delete_view(request, id):  # a simple delete function
     # dictionary for initial data with
     # field names as keys
     context = {}
@@ -59,3 +59,26 @@ def delete_view(request, id):
 
     #redirect to the page
     return render(request, "delete_page.html", context)
+
+
+def update_view(request, id): # a simple update function
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(Processor, id=id)
+
+    # pass the object as instance in form
+    form = Processform(request.POST or None, instance=obj)
+
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/pollputers")
+
+    # add form dictionary to context
+    context["form"] = form
+
+    return render(request, "update_process.html", context)
