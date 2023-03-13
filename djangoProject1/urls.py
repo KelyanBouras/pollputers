@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.views.generic.base import TemplateView
 # used to link url to the pollputers url and  to the admin panel
 urlpatterns = [
     path('pollputers/', include('pollputers.urls')),
+    path("accounts/", include("accounts.urls")),  # new
     path('admin/', admin.site.urls),
+    path('',TemplateView.as_view(template_name='log.html'),name='home'),
+    path("accounts/", include("django.contrib.auth.urls")),  # new
 ]

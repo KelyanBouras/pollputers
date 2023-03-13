@@ -3,6 +3,9 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from .forms import *
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
 
 def processlist(request): # a view used to list the processor that are in the database
