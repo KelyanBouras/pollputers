@@ -82,6 +82,13 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'Laundry12+',
         'HOST': 'localhost',
+    },
+    'test':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_pollputers',
+        'USER': 'root',
+        'PASSWORD': 'Laundry12+',
+        'HOST': 'localhost',
     }
 }
 
